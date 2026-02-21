@@ -1,0 +1,17 @@
+<students>
+    <student>
+        <name>Олег</name>
+        <age>14</age>
+        <grade>8</grade>
+    </student>
+    <student>
+        <name>Марія</name>
+        <age>13</age>
+        <grade>7</grade>
+    </student>
+    <student>
+        <name>Іван</name>
+        <age>15</age>
+        <grade>9</grade>
+    </student>
+</students>

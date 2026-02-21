@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Товари</h1>
+
+{% for p in products %}
+<div style="background:white;padding:20px;margin-bottom:20px;border-radius:10px;">
+    <h2><a href="/product/{{ p.id }}/">{{ p.name }}</a></h2>
+    <p>Ціна: {{ p.price }} грн</p>
+    <p>{{ p.description|truncatechars:100 }}</p>
+
+    {% if user.is_authenticated %}
+        <button class="btn" onclick="addToCart({{ p.id }})">Додати в кошик</button>
+    {% else %}
+        <p>Увійдіть, щоб додати товар</p>
+    {% endif %}
+</div>
+{% endfor %}
+
+<script>
+function addToCart(id) {
+    window.location.href = '/add/' + id + '/';
+}
+</script>
+{% endblock %}

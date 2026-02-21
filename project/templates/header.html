@@ -1,0 +1,11 @@
+<header>
+    <a href="/">Головна</a>
+    <a href="/rest-front/">REST + JS</a>
+    {% if user.is_authenticated %}
+        <a href="/basket/">Кошик</a>
+        <a href="/logout/">Вийти ({{ user.username }})</a>
+    {% else %}
+        <a href="/login/">Увійти</a>
+        <a href="/register/">Реєстрація</a>
+    {% endif %}
+</header>

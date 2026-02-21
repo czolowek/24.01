@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="background:white;padding:20px;border-radius:10px;">
+    <h1>{{ product.name }}</h1>
+    <p style="font-size:18px;">Ціна: {{ product.price }} грн</p>
+    <p>{{ product.description }}</p>
+
+    {% if user.is_authenticated %}
+        <a class="btn" href="/add/{{ product.id }}/">Додати в кошик</a>
+    {% else %}
+        <p>Увійдіть, щоб додати товар у кошик</p>
+    {% endif %}
+</div>
+
+<h2 style="margin-top:40px;">Коментарі</h2>
+
+<div id="comments">
+    {% for c in comments %}
+    <div style="background:white;padding:15px;margin-bottom:15px;border-radius:10px;">
+        <b>{{ c.user.username }}</b> ({{ c.created|date:"d.m.Y H:i" }})
+        <p>{{ c.text }}</p>
+    </div>
+    {% empty %}
+    <p>Коментарів ще немає</p>
+    {% endfor %}
+</div>
+
+<h3>Залишити коментар</h3>
+
+<form id="comment-form" method="POST" style="background:white;padding:20px;border-radius:10px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn" type="submit">Надіслати</button>
+</form>
+
+<script>
+document.getElementById('comment-form').addEventListener('submit', function(e) {
+    const textarea = this.querySelector('textarea');
+    if (!textarea.value.trim()) {
+        e.preventDefault();
+        alert('Коментар не може бути порожнім');
+    }
+});
+</script>
+
+<script>
+document.getElementById('comment-form').addEventListener('submit', async function(e) {
+    if (this.querySelector('.captcha')) return;
+});
+</script>
+{% endblock %}

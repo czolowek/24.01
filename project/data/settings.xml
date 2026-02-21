@@ -1,0 +1,5 @@
+<settings>
+    <siteName>My Shop</siteName>
+    <itemsPerPage>10</itemsPerPage>
+    <showComments>true</showComments>
+</settings>

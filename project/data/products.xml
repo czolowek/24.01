@@ -1,0 +1,10 @@
+<products>
+    <product>
+        <name>Яблуко</name>
+        <price>20</price>
+    </product>
+    <product>
+        <name>Банан</name>
+        <price>30</price>
+    </product>
+</products>

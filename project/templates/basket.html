@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Ваш кошик</h1>
+
+{% for i in items %}
+<div style="background:white;padding:20px;margin-bottom:20px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
+    <div>
+        <h2>{{ i.product.name }}</h2>
+        <p>Кількість: <span class="count">{{ i.count }}</span></p>
+    </div>
+    <div>
+        <a class="btn" href="/basket-minus/{{ i.product.id }}/">-</a>
+        <a class="btn" href="/basket-plus/{{ i.product.id }}/">+</a>
+    </div>
+</div>
+{% empty %}
+<p>Ваш кошик порожній</p>
+{% endfor %}
+{% endblock %}

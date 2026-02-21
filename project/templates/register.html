@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Реєстрація</h1>
+
+<form id="register-form" method="POST" style="background:white;padding:20px;border-radius:10px;">
+    {% csrf_token %}
+    <input type="text" name="username" id="reg-username" placeholder="Логін"><br><br>
+    <input type="email" name="email" id="reg-email" placeholder="Email"><br><br>
+    <input type="password" name="password1" id="reg-pass1" placeholder="Пароль"><br><br>
+    <input type="password" name="password2" id="reg-pass2" placeholder="Повторіть пароль"><br><br>
+    <button class="btn" type="submit">Зареєструватися</button>
+</form>
+
+<script>
+document.getElementById('register-form').addEventListener('submit', function(e) {
+    const p1 = document.getElementById('reg-pass1').value;
+    const p2 = document.getElementById('reg-pass2').value;
+    if (p1 !== p2) {
+        e.preventDefault();
+        alert('Паролі не співпадають');
+    }
+});
+</script>
+{% endblock %}
